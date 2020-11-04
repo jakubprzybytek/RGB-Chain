@@ -36,17 +36,6 @@ F 3 "~" H 14650 3150 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x06 J2
-U 1 1 5F8AFA1F
-P 14300 5750
-F 0 "J2" H 14380 5742 50  0000 L CNN
-F 1 "SWD" H 14380 5651 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" H 14300 5750 50  0001 C CNN
-F 3 "~" H 14300 5750 50  0001 C CNN
-	1    14300 5750
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:LED D5
 U 1 1 5F8AFE50
 P 13700 7650
@@ -350,7 +339,7 @@ Wire Wire Line
 	4900 4650 4500 4650
 Connection ~ 4500 4650
 Wire Wire Line
-	4500 4650 4500 3900
+	4500 4650 4500 4150
 Wire Wire Line
 	4850 3900 5150 3900
 Wire Wire Line
@@ -468,17 +457,6 @@ F 2 "LED_SMD:LED_0805_2012Metric" H 6500 4800 50  0001 C CNN
 F 3 "~" H 6500 4800 50  0001 C CNN
 	1    6500 4800
 	1    0    0    -1  
-$EndComp
-$Comp
-L power:VBUS #PWR0108
-U 1 1 5F8DBA77
-P 6750 4800
-F 0 "#PWR0108" H 6750 4650 50  0001 C CNN
-F 1 "VBUS" V 6765 4928 50  0000 L CNN
-F 2 "" H 6750 4800 50  0001 C CNN
-F 3 "" H 6750 4800 50  0001 C CNN
-	1    6750 4800
-	0    1    1    0   
 $EndComp
 Wire Wire Line
 	5950 4800 5700 4800
@@ -934,10 +912,6 @@ Text GLabel 13950 5850 0    50   Input ~ 0
 SWDIO
 Text GLabel 13950 5950 0    50   Input ~ 0
 NRST
-Text GLabel 13950 6050 0    50   Input ~ 0
-SWO
-Wire Wire Line
-	13950 6050 14100 6050
 Wire Wire Line
 	13950 5950 14100 5950
 Wire Wire Line
@@ -1455,7 +1429,7 @@ U 1 1 5FA13C17
 P 1100 1750
 F 0 "P1" H 1207 2617 50  0000 C CNN
 F 1 "USB_C_Plug_USB2.0" H 1207 2526 50  0000 C CNN
-F 2 "Connector_USB:USB_C_Receptacle_Amphenol_12401610E4-2A" H 1250 1750 50  0001 C CNN
+F 2 "JPConnectors:USB_C_Receptacle_Adam_Tech" H 1250 1750 50  0001 C CNN
 F 3 "https://www.usb.org/sites/default/files/documents/usb_type-c.zip" H 1250 1750 50  0001 C CNN
 	1    1100 1750
 	1    0    0    -1  
@@ -1476,7 +1450,7 @@ L Connector:Barrel_Jack J4
 U 1 1 5FA161AC
 P 1000 4400
 F 0 "J4" H 1057 4725 50  0000 C CNN
-F 1 "Barrel_Jack" H 1057 4634 50  0000 C CNN
+F 1 "Power" H 1057 4634 50  0000 C CNN
 F 2 "JPConnectors:PowerSocketSMD" H 1050 4360 50  0001 C CNN
 F 3 "~" H 1050 4360 50  0001 C CNN
 	1    1000 4400
@@ -2042,11 +2016,8 @@ Wire Wire Line
 	6700 4650 6700 4800
 Wire Wire Line
 	6700 4800 6650 4800
-Wire Wire Line
-	6700 4800 6750 4800
-Connection ~ 6700 4800
 Text Notes 14600 4850 0    50   ~ 0
-I(d)=16mA*3=48mA
+I(led)=16mA*3=48mA
 $Comp
 L myLib:WS2812D D6
 U 1 1 6008788C
@@ -2069,4 +2040,23 @@ Wire Wire Line
 Connection ~ 1750 7550
 Wire Wire Line
 	1750 7550 1800 7550
+$Comp
+L Connector_Generic:Conn_01x05 J2
+U 1 1 5FA56BB8
+P 14300 5750
+F 0 "J2" H 14380 5792 50  0000 L CNN
+F 1 "SWD" H 14380 5701 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 14300 5750 50  0001 C CNN
+F 3 "~" H 14300 5750 50  0001 C CNN
+	1    14300 5750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6700 4650 6700 4150
+Wire Wire Line
+	6700 4150 4500 4150
+Connection ~ 6700 4650
+Connection ~ 4500 4150
+Wire Wire Line
+	4500 4150 4500 3900
 $EndSCHEMATC
