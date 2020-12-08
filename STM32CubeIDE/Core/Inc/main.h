@@ -60,6 +60,9 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define WS2812_Pin GPIO_PIN_2
 #define WS2812_GPIO_Port GPIOA
+#define EncSwitch_Pin GPIO_PIN_5
+#define EncSwitch_GPIO_Port GPIOA
+#define EncSwitch_EXTI_IRQn EXTI4_15_IRQn
 #define Led_Pin GPIO_PIN_15
 #define Led_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */

@@ -104,12 +104,6 @@ int main(void)
   {
 	RgbChain_Loop();
 
-	//HAL_GPIO_TogglePin(WS2812_GPIO_Port, WS2812_Pin);
-
-	//send();
-	//reset();
-	//zero();
-	//one();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -264,12 +258,22 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(Led_GPIO_Port, Led_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pin : EncSwitch_Pin */
+  GPIO_InitStruct.Pin = EncSwitch_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(EncSwitch_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pin : Led_Pin */
   GPIO_InitStruct.Pin = Led_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(Led_GPIO_Port, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI4_15_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI4_15_IRQn);
 
 }
 
@@ -285,7 +289,11 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-
+	while (1)
+	{
+		HAL_GPIO_TogglePin(Led_GPIO_Port, Led_Pin);
+		HAL_Delay(50);
+	}
   /* USER CODE END Error_Handler_Debug */
 }
 

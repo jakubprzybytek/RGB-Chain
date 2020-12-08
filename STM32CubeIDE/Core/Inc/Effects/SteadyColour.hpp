@@ -8,17 +8,14 @@
 #ifndef INC_EFFECTS_STEADYCOLOUR_HPP_
 #define INC_EFFECTS_STEADYCOLOUR_HPP_
 
-#include "..\WS2812Driver.hpp"
+#include "..\Effect.hpp"
 
-class SteadyColour {
+class SteadyColour: public Effect {
 
 private:
-	WS2812Driver &ws2812;
-
-	void tick();
 
 public:
-	SteadyColour(WS2812Driver &ws2812) : ws2812(ws2812) {
+	SteadyColour(WS2812Driver &ws2812) : Effect(ws2812) {
 	}
 
 	void loop();
