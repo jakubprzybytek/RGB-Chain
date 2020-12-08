@@ -255,7 +255,7 @@ L Transistor_FET:IRF7404 Q1
 U 1 1 5F8C6D8F
 P 5450 4000
 F 0 "Q1" V 5792 4000 50  0000 C CNN
-F 1 "IRF7404" V 5701 4000 50  0000 C CNN
+F 1 "IRF7204" V 5701 4000 50  0000 C CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 5650 3925 50  0001 L CIN
 F 3 "http://www.infineon.com/dgdl/irf7404.pdf?fileId=5546d462533600a4015355fa2b5b1b9e" V 5450 4000 50  0001 L CNN
 	1    5450 4000
@@ -2059,4 +2059,6 @@ Connection ~ 6700 4650
 Connection ~ 4500 4150
 Wire Wire Line
 	4500 4150 4500 3900
+Text Notes -1700 3450 0    50   ~ 0
+Bugs:\nPower led is on even when not chargin
 $EndSCHEMATC
