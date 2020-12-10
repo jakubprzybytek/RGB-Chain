@@ -13,6 +13,7 @@
 class SteadyColour: public Effect {
 
 private:
+	bool sendColour(uint8_t h, uint8_t v);
 
 public:
 	SteadyColour(WS2812Driver &ws2812) : Effect(ws2812) {

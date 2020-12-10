@@ -1264,7 +1264,7 @@ F 3 "~" H 4600 8350 50  0001 C CNN
 	1    4600 8350
 	1    0    0    -1  
 $EndComp
-Text GLabel 13250 4100 0    50   Input ~ 0
+Text GLabel 13050 4100 0    50   Input ~ 0
 USART_TX
 $Comp
 L power:+5V #PWR0140
@@ -1313,17 +1313,6 @@ $EndComp
 Text Notes 300  -350 0    50   ~ 0
 https://webench.ti.com/power-designer/switching-regulator/customize/12?AppType=None&Flavor=None&O1I=0.4&O1V=5.0&Topology=Boost&VinMax=5.0&VinMin=3&VoltageOption=None&base_pn=LM2735Y&flavor=None&lang_chosen=en_US&op_TA=30&optfactor=3&origin=ti_search
 $Comp
-L Transistor_FET:IRLML2060 Q3
-U 1 1 5FAC3A29
-P 13650 4100
-F 0 "Q3" H 13854 4146 50  0000 L CNN
-F 1 "IRLML2502" H 13854 4055 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 13850 4025 50  0001 L CIN
-F 3 "https://www.infineon.com/dgdl/irlml2060pbf.pdf?fileId=5546d462533600a401535664b7fb25ee" H 13650 4100 50  0001 L CNN
-	1    13650 4100
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GND #PWR0144
 U 1 1 5FAC7F38
 P 13750 4300
@@ -1339,7 +1328,7 @@ L Device:R R11
 U 1 1 5FAC8412
 P 13750 3600
 F 0 "R11" H 13820 3646 50  0000 L CNN
-F 1 "47k" H 13820 3555 50  0000 L CNN
+F 1 "1k" H 13820 3555 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 13680 3600 50  0001 C CNN
 F 3 "~" H 13750 3600 50  0001 C CNN
 	1    13750 3600
@@ -1368,32 +1357,16 @@ NoConn ~ 15000 4200
 $Comp
 L Device:R R10
 U 1 1 5FAFCC1F
-P 13350 4350
-F 0 "R10" H 13420 4396 50  0000 L CNN
-F 1 "100k" H 13420 4305 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 13280 4350 50  0001 C CNN
-F 3 "~" H 13350 4350 50  0001 C CNN
-	1    13350 4350
-	1    0    0    -1  
+P 13200 4100
+F 0 "R10" H 13270 4146 50  0000 L CNN
+F 1 "2k2" H 13270 4055 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 13130 4100 50  0001 C CNN
+F 3 "~" H 13200 4100 50  0001 C CNN
+	1    13200 4100
+	0    1    1    0   
 $EndComp
-Wire Wire Line
-	13250 4100 13350 4100
-Wire Wire Line
-	13350 4100 13350 4200
-Connection ~ 13350 4100
 Wire Wire Line
 	13350 4100 13450 4100
-$Comp
-L power:GND #PWR0146
-U 1 1 5FB0BAE2
-P 13350 4500
-F 0 "#PWR0146" H 13350 4250 50  0001 C CNN
-F 1 "GND" H 13355 4327 50  0000 C CNN
-F 2 "" H 13350 4500 50  0001 C CNN
-F 3 "" H 13350 4500 50  0001 C CNN
-	1    13350 4500
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	14350 3150 14350 3800
 Wire Wire Line
@@ -2061,4 +2034,15 @@ Wire Wire Line
 	4500 4150 4500 3900
 Text Notes -1700 3450 0    50   ~ 0
 Bugs:\nPower led is on even when not chargin
+$Comp
+L Transistor_BJT:BC847 Q?
+U 1 1 5FD00BD5
+P 13650 4100
+F 0 "Q?" H 13841 4146 50  0000 L CNN
+F 1 "BC847" H 13841 4055 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 13850 4025 50  0001 L CIN
+F 3 "http://www.infineon.com/dgdl/Infineon-BC847SERIES_BC848SERIES_BC849SERIES_BC850SERIES-DS-v01_01-en.pdf?fileId=db3a304314dca389011541d4630a1657" H 13650 4100 50  0001 L CNN
+	1    13650 4100
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

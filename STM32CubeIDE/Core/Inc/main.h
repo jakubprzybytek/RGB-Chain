@@ -58,11 +58,15 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define EncoderA_Pin GPIO_PIN_0
+#define EncoderA_GPIO_Port GPIOA
+#define EncoderB_Pin GPIO_PIN_1
+#define EncoderB_GPIO_Port GPIOA
 #define WS2812_Pin GPIO_PIN_2
 #define WS2812_GPIO_Port GPIOA
-#define EncSwitch_Pin GPIO_PIN_5
-#define EncSwitch_GPIO_Port GPIOA
-#define EncSwitch_EXTI_IRQn EXTI4_15_IRQn
+#define EncoderSwitch_Pin GPIO_PIN_5
+#define EncoderSwitch_GPIO_Port GPIOA
+#define EncoderSwitch_EXTI_IRQn EXTI4_15_IRQn
 #define Led_Pin GPIO_PIN_15
 #define Led_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */

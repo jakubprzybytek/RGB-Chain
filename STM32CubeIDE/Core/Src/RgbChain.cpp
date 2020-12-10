@@ -7,6 +7,7 @@
 #include "Effects/OneColour.hpp"
 
 extern UART_HandleTypeDef huart2;
+extern TIM_HandleTypeDef htim2;
 
 WS2812Driver ws2812(huart2);
 
@@ -21,6 +22,7 @@ uint8_t effectIndex = 0;
 
 void RgbChain_Init() {
 	HAL_GPIO_WritePin(Led_GPIO_Port, Led_Pin, GPIO_PIN_SET);
+	HAL_TIM_Encoder_Start(&htim2, TIM_CHANNEL_ALL);
 }
 
 void RgbChain_Loop() {
