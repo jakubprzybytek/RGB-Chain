@@ -3,6 +3,7 @@
 #include "RgbChain.hpp"
 
 #include "WS2812Driver.hpp"
+#include "Encoder.hpp"
 #include "Effects/SteadyColour.hpp"
 #include "Effects/OneColour.hpp"
 
@@ -10,11 +11,10 @@ extern UART_HandleTypeDef huart2;
 extern TIM_HandleTypeDef htim2;
 
 WS2812Driver ws2812(huart2);
+Encoder encoder(htim2);
 
-bool changeEffect = false;
-
-SteadyColour steadyColour(ws2812);
-OneColour oneColour(ws2812);
+SteadyColour steadyColour(ws2812, encoder);
+OneColour oneColour(ws2812, encoder);
 
 #define NUMBER_OF_EFFECTS 2
 Effect *effects[NUMBER_OF_EFFECTS] = { &steadyColour, &oneColour };
@@ -34,5 +34,5 @@ void RgbChain_Loop() {
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	HAL_GPIO_TogglePin(Led_GPIO_Port, Led_Pin);
-	changeEffect = true;
+	encoder.setPressed();
 }

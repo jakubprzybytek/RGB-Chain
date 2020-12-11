@@ -6,11 +6,8 @@
 #define MAX_VALUE 128
 
 bool SteadyColour::sendColour(uint8_t h, uint8_t v) {
-	HsvColor hsv;
-	hsv.h = h;
-	hsv.s = 255;
-	hsv.v = v;
-	RgbColor colour = HsvToRgb(hsv);
+	tickDelay = encoder.getPosition();
+	RgbColor colour = RgbColor::fromHsv(h, 255, v);
 	for (uint8_t d = 0; d < ws2812.getNumberOfDiodes(); d++) {
 		ws2812.set(d, colour.r, colour.g, colour.b);
 	}
@@ -18,6 +15,7 @@ bool SteadyColour::sendColour(uint8_t h, uint8_t v) {
 }
 
 void SteadyColour::loop() {
+	encoder.setPosition(tickDelay);
 	uint8_t h = 0;
 	while (1) {
 		for (uint8_t v = MIN_VALUE; v <= MAX_VALUE; v++) {

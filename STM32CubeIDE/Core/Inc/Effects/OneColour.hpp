@@ -15,7 +15,7 @@ class OneColour: public Effect {
 private:
 
 public:
-	OneColour(WS2812Driver &ws2812) : Effect(ws2812) {
+	OneColour(WS2812Driver &ws2812, Encoder &encoder) : Effect(ws2812, encoder, 20) {
 	}
 
 	void loop();

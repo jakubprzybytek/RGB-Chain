@@ -16,7 +16,7 @@ private:
 	bool sendColour(uint8_t h, uint8_t v);
 
 public:
-	SteadyColour(WS2812Driver &ws2812) : Effect(ws2812) {
+	SteadyColour(WS2812Driver &ws2812, Encoder &encoder) : Effect(ws2812, encoder, 50) {
 	}
 
 	void loop();
