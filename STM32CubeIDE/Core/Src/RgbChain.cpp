@@ -4,6 +4,7 @@
 
 #include "WS2812Driver.hpp"
 #include "Encoder.hpp"
+#include "Effects/ColourFollower.hpp"
 #include "Effects/SteadyColour.hpp"
 #include "Effects/OneColour.hpp"
 
@@ -13,11 +14,12 @@ extern TIM_HandleTypeDef htim2;
 WS2812Driver ws2812(huart2);
 Encoder encoder(htim2);
 
+ColourFollower colourFollower(ws2812, encoder);
 SteadyColour steadyColour(ws2812, encoder);
 OneColour oneColour(ws2812, encoder);
 
-#define NUMBER_OF_EFFECTS 2
-Effect *effects[NUMBER_OF_EFFECTS] = { &steadyColour, &oneColour };
+#define NUMBER_OF_EFFECTS 3
+Effect *effects[NUMBER_OF_EFFECTS] = { &colourFollower, &steadyColour, &oneColour };
 uint8_t effectIndex = 0;
 
 void RgbChain_Init() {

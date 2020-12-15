@@ -2032,8 +2032,8 @@ Connection ~ 6700 4650
 Connection ~ 4500 4150
 Wire Wire Line
 	4500 4150 4500 3900
-Text Notes -1700 3450 0    50   ~ 0
-Bugs:\nPower led is on even when not chargin
+Text Notes -2900 3600 0    50   ~ 0
+Bugs:\nPower led is on even when not chargin\nLevel converter too slow - UART speed set to 800k but should be 2400k
 $Comp
 L Transistor_BJT:BC847 Q?
 U 1 1 5FD00BD5

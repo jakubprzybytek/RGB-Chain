@@ -13,7 +13,11 @@
 class SteadyColour: public Effect {
 
 private:
-	bool sendColour(uint8_t h, uint8_t v);
+	static uint8_t delays[];
+
+	uint8_t delayIndex = 5;
+
+	bool sendColour(uint8_t h, uint8_t s, uint8_t v);
 
 public:
 	SteadyColour(WS2812Driver &ws2812, Encoder &encoder) : Effect(ws2812, encoder, 50) {
