@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "Effects\ColourFollower.hpp"
 
 #include "Colours.hpp"
@@ -11,18 +13,13 @@ bool ColourFollower::sendColour(uint8_t h, uint8_t v) {
 	delayIndex = encoder.getPosition() % sizeof(delays);
 	tickDelay = delays[delayIndex];
 
-	uint8_t whiteDiodeIndex = (whiteDiodeCounter / (sizeof(delays) - delayIndex) / 4) % ws2812.getNumberOfDiodes();
+	uint16_t whiteDiodeMaxCount = ws2812.getNumberOfDiodes() * delays[sizeof(delays) - delayIndex - 1] * 2;
 
 	for (uint8_t d = 0; d < ws2812.getNumberOfDiodes(); d++) {
 
-		uint8_t s;
-		if (d == whiteDiodeIndex) {
-			s = 0; // white
-		} else if (d == (whiteDiodeIndex - 1) % ws2812.getNumberOfDiodes() || d == (whiteDiodeIndex + 1) % ws2812.getNumberOfDiodes()) {
-			s = 128; // half white
-		} else {
-			s = 255; // actual colour
-		}
+		uint16_t diodeCounter = whiteDiodeMaxCount / 2 + d * delays[sizeof(delays) - delayIndex - 1] * 2;
+		uint16_t sRaw = abs(whiteDiodeCounter - diodeCounter) * (delayIndex + 1);
+		uint8_t s = sRaw > 255 ? 255 : sRaw;
 
 		RgbColor colour = RgbColor::fromHsv(h, s, v);
 
@@ -30,7 +27,7 @@ bool ColourFollower::sendColour(uint8_t h, uint8_t v) {
 		h -= 6;
 	}
 
-	whiteDiodeCounter++;
+	whiteDiodeCounter = whiteDiodeCounter < whiteDiodeMaxCount * 2 ? whiteDiodeCounter + 1 : 0;
 
 	return tick();
 }
