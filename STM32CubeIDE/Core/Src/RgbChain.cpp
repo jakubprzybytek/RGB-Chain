@@ -23,7 +23,7 @@ Effect *effects[NUMBER_OF_EFFECTS] = { &colourFollower, &steadyColour, &oneColou
 uint8_t effectIndex = 0;
 
 void RgbChain_Init() {
-	HAL_GPIO_WritePin(Led_GPIO_Port, Led_Pin, GPIO_PIN_SET);
+	LED_Blink(100);
 	HAL_TIM_Encoder_Start(&htim2, TIM_CHANNEL_ALL);
 }
 
@@ -31,10 +31,10 @@ void RgbChain_Loop() {
 	while (1) {
 		effects[effectIndex]->loop();
 		effectIndex = effectIndex < NUMBER_OF_EFFECTS - 1 ? effectIndex + 1 : 0;
+		LED_Blink(50);
 	}
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-	HAL_GPIO_TogglePin(Led_GPIO_Port, Led_Pin);
 	encoder.setPressed();
 }

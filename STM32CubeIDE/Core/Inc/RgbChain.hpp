@@ -5,6 +5,8 @@
 extern "C" {
 #endif
 
+#define LED_Blink(delay) HAL_GPIO_WritePin(Led_GPIO_Port, Led_Pin, GPIO_PIN_SET); HAL_Delay(delay); HAL_GPIO_WritePin(Led_GPIO_Port, Led_Pin, GPIO_PIN_RESET);
+
 extern void RgbChain_Init();
 
 extern void RgbChain_Loop();
